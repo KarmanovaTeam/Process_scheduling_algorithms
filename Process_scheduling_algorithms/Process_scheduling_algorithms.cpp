@@ -2,6 +2,7 @@
 #include "syuzev_dz.cpp"
 #include "SJN.cpp"
 #include "fedotova_dz.cpp"
+#include "Multilevel-Queue-Kozyrev.cpp"
 using namespace std;
 
 int main()
