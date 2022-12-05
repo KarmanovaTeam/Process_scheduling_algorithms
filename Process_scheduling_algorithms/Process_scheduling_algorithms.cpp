@@ -1,6 +1,7 @@
 ﻿#include<iostream> 
 #include "syuzev_dz.cpp"
 #include "SJN.cpp"
+#include "fedotova_dz.cpp"
 using namespace std;
 
 int main()
