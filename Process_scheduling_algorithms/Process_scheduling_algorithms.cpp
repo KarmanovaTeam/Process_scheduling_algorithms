@@ -1,5 +1,6 @@
 ﻿#include<iostream> 
 #include "syuzev_dz.cpp"
+#include "SJN.cpp"
 using namespace std;
 
 int main()
@@ -29,6 +30,7 @@ int main()
     const int n = processes.size();
     sortBT(burst_time, n, processes);
     findavgTime(processes, n, burst_time, quantum);
+    SJN_avg_time(processes, n, burst_time);
     return 0;
 }
 
