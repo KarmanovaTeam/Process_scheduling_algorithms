@@ -1,39 +1,31 @@
-﻿#include<iostream> 
-#include "syuzev_dz.cpp"
-#include "GromovaFCFS.cpp"
-#include "SJN.cpp"
-#include "fedotova_dz.cpp"
-#include "Multilevel-Queue-Kozyrev.cpp"
+#include<iostream> 
+#include<vector> 
 using namespace std;
 
-int main()
-{   
-    //подключение русского языка
-    setlocale(LC_ALL, "Russian");
-    cout << "Методы планирование процессов в операционных системах" << endl;
-    // id (номер) процессов
-    vector <int> processes = { 1, 2, 3, 4, 5 };
-    cout <<"Тестовые данные: "<< endl<< "Процессы(задачи) :" << endl;
-    for (int i = 0; i < processes.size(); i++)
-    {
-        cout << processes[i]<< " ";
-    }
-    cout << endl;
-    // время вызрыва для процессов
-    vector <int> burst_time = { 10, 5, 8, 6, 7 };
-    cout << "Время: " << endl;
-    for (int i = 0; i < burst_time.size(); i++)
-    {
-        cout << burst_time[i] << " ";
-    }
-    cout << endl;
-    //время кванта 
-    const int quantum = 2;
-    cout << "Квант времени: " << quantum << endl;
-    const int n = processes.size();
-    sortBT(burst_time, n, processes);
-    findavgTime(processes, n, burst_time, quantum);
-    SJN_avg_time(processes, n, burst_time);
-    return 0;
+
+//Приоритетность выполнения
+enum PRIORITY
+{
+    LOW = 1,
+    NORMAL=2,
+    HIGH=3
+};
+
+struct Process {
+    int Pid; //номер процесса(задачи), 
+    int burst_time;// начальное время
+    PRIORITY priority = NORMAL;//За основу взята средняя приоритетность, т.е. где приоритетность не указана - она нормальная(т.е. равна 2) 
+};
+
+int main() {
+    //Тест 1
+    //ПОЯСНЕНИЕ : {3, 18, HIGH} 3-номер процесса, 18 - burst_time, HIGH - приоритетность, если приоритетность не стоит - значит, она по умолчанию NORMAL
+    const int quantum = 2; //квант времения
+    vector<Process> processes = { {1, 10},{2, 4}, {3, 18, HIGH}, {4, 99, LOW}, {5, 2}, {6, 55}, {7, 1000},{8, 23, LOW},{9, 10},{10, 100000, HIGH} };
+    //Тест 2
+    /*const int quantum = 10; //квант времения
+    vector<Process> processes = { {1, 100000},{2, 1000}, {3, 5000, HIGH}, {4, 2000, HIGH}, {5, 100000, HIGH}};*/
 }
+
+
 
