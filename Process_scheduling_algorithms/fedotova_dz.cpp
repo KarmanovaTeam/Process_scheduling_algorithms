@@ -1,4 +1,5 @@
 #include <iostream> 
+#include<vector>
 using namespace std;
 
 
@@ -10,10 +11,11 @@ struct Process {
 
 
 ///Функция для определения времени ожидания для всех процессов
-void findWaitingTime(Process proc[], int n,
-	int wt[])
+void findWaitingTime(vector <Process>& proc,const int& n,
+	vector <int>& wt)
 {
-	int* rt = new int[n];
+	vector<int> rt;
+	rt.resize(n);
 
 	///Копия времени взрыва в rt[] 
 	for (int i = 0; i < n; i++)
@@ -21,7 +23,7 @@ void findWaitingTime(Process proc[], int n,
 	int complete = 0, t = 0, minm = INT_MAX;
 	int shortest = 0, finish_time;
 	bool check = false;
-	
+
 	///Обрабатываtncz до тех пор, пока все процессы не будут завершены
 	while (complete != n) {
 
@@ -72,8 +74,8 @@ void findWaitingTime(Process proc[], int n,
 
 
 ///Функция для расчета времени обхода
-void findTurnAroundTime(Process proc[], int n,
-	int wt[], int tat[])
+void findTurnAroundTime(vector <Process>& proc,const int& n,
+	vector <int>& wt,vector <int>& tat)
 {
 	///Расчет времени выполнения работ путем добавления bt[i] + wt[i] 
 	for (int i = 0; i < n; i++)
@@ -83,18 +85,20 @@ void findTurnAroundTime(Process proc[], int n,
 
 
 ///Функция для вычисления среднего времени
-void findavgTime(Process proc[], int n)
+void findavgTime(vector <Process>& proc,const int& n)
 {
 
 	int total_wt = 0,
 		total_tat = 0;
-	int* wt = new int[n];
-	int* tat = new int[n];
+	vector <int> wt;
+	wt.resize(n);
+	vector <int> tat;
+	tat.resize(n);
 
 
 	///Функция для определения времени ожидания всех процессов
 	findWaitingTime(proc, n, wt);
- 
+
 	///Функция для определения времени обхода для всех процессов
 	findTurnAroundTime(proc, n, wt, tat);
 
@@ -128,11 +132,10 @@ void findavgTime(Process proc[], int n)
 ///Код драйвера
 int main()
 {
-	Process proc[] = { { 1, 6, 2 }, { 2, 2, 5 },
+	vector <Process> proc = { { 1, 6, 2 }, { 2, 2, 5 },
 					{ 3, 8, 1 }, { 4, 3, 0}, {5, 4, 4} };
-	int n = sizeof(proc) / sizeof(proc[0]);
+	const int n = proc.size();
 	findavgTime(proc, n);
 	return 0;
 }
-
 
