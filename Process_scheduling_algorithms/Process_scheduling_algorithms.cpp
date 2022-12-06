@@ -1,5 +1,6 @@
 ﻿#include<iostream> 
 #include "syuzev_dz.cpp"
+#include "GromovaFCFS.cpp"
 #include "SJN.cpp"
 #include "fedotova_dz.cpp"
 #include "Multilevel-Queue-Kozyrev.cpp"
