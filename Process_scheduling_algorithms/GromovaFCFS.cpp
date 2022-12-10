@@ -3,7 +3,7 @@
 using namespace std;
 
 template <typename T>
-void sortProcess((vector <T>& processes, const int& n)
+void sortProcess(vector <T>& processes, const int& n)
 {
     vector <int> at;
     vector <int> num;
