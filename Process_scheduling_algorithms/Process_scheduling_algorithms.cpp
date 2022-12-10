@@ -2,6 +2,7 @@
 #include<vector> 
 #include"SJN.cpp"
 #include"syuzev_dz.cpp"
+#include"GromovaFCFS.cpp"
 using namespace std;
 
 //Приоритетность выполнения
