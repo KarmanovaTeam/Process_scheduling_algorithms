@@ -55,11 +55,11 @@ void findavgTime(vector <T>& processes, const int& quantum)
     int total_wt = 0, total_tat = 0;
     findWaitingTime(processes, n, wt, quantum);
     findTurnAroundTime(processes, n, wt, tat);
-    cout << "PN-номер процесса\n";
-    cout << "BT-время взрыва\n";
-    cout << "WT-время ожидания \n";
-    cout << "TAT-время оборота\n";
-    cout << "PN\t " << " \tBT "
+    //cout << "PN-номер процесса\n";
+    //cout << "BT-время взрыва\n";
+    //cout << "WT-время ожидания \n";
+    //cout << "TAT-время оборота\n";
+    //cout << "PN\t " << " \tBT "
         << " \tWT " << " \tTAT=BT+wt\n";
     for (int i = 0; i < n; i++)
     {
