@@ -7,7 +7,7 @@ void sortProcess(vector <T>& processes, const int& n)
 {
     vector <int> at;
     vector <int> num;
-    rem_bt.resize(n);
+    //rem_bt.resize(n);
     for (int i = 0; i < n; i++)
     {
         at[i] = processes[i].arriving_time;
@@ -21,14 +21,14 @@ void sortProcess(vector <T>& processes, const int& n)
          
             if (at[i] < at[j])
             {
-                int Na,T;
+                int Na,A;
                 Na = num[i];
                 num[i] = num[j];
                 num[j] = Na;
 
-                T = at[i];
+                A = at[i];
                 at[i] = at[j];
-                at[j] = T;
+                at[j] = A;
             
             }
         }
