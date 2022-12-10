@@ -5,20 +5,20 @@
 
 using namespace std;
 
-void SJN_avg_time(const vector <int>& processes, const int& n, const vector <int>& burst_time)
+void SJN_avg_time(const vector <Process>& processes)
 {
 	vector <int> p, bt, wt, tat;
 
-	int i, j, total = 0, index, temp;
+	int i, j, n, total = 0, index, temp;
 	double avg_wt, avg_tat;
 
-	//n = processes.size();	
+	n = processes.size();
 
 	for (i = 0; i < n; i++) {
 
-		bt.push_back(burst_time[i]); // Записываем в матрицу B_T_
+		bt.push_back(processes[i].burst_time); // Записываем в матрицу B_T_
 
-		p.push_back(processes[i]);		 // Записываем номер процесса
+		p.push_back(processes[i].Pid);		 // Записываем номер процесса
 
 	}
 
@@ -72,7 +72,7 @@ void SJN_avg_time(const vector <int>& processes, const int& n, const vector <int
 	//printf("WT - waiting time, время ожидания начала выполнения процесса\n");
 	//printf("TAT - turn around time, время от вызова процесса, до его завершения. TAT = WT + BT при одновременном вызове процессов\n");
 	
-	printf("\nP     BT     WT     TAT\n");
+	printf("P     BT     WT     TAT\n");
 
 	// Вычисление T_A_T_ и печать
 
@@ -91,6 +91,6 @@ void SJN_avg_time(const vector <int>& processes, const int& n, const vector <int
 
 	avg_tat = (float)total / n;
 
-	printf("Average Waiting Time= %f", avg_wt);
-	printf("\nAverage Turnaround Time= %f", avg_tat);
+	printf("Среднее время ожидания: %f", avg_wt);
+	printf("\nСреднее TAT= %f", avg_tat);
 }
