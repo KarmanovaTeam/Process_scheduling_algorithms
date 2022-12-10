@@ -4,20 +4,6 @@
 #include"syuzev_dz.cpp"
 using namespace std;
 
-
-//Приоритетность выполнения
-enum PRIORITY
-{
-    LOW = 1,
-    NORMAL=2,
-    HIGH=3
-};
-
-#include<iostream> 
-#include<vector> 
-using namespace std;
-
-
 //Приоритетность выполнения
 enum PRIORITY
 {
