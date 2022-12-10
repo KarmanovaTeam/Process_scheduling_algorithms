@@ -4,14 +4,15 @@ using namespace std;
 
 
 struct Process {
-	int pid; // Идентификатор процесса
-	int bt; // Время взрыва
-	int art; // Время прибытия 
+	int Pid; // Идентификатор процесса
+	int burst_time; // Время взрыва
+	int arriving_time; // Время прибытия 
 };
 
 
 ///Функция для определения времени ожидания для всех процессов
-void findWaitingTime(vector <Process>& proc,const int& n,
+template <typename T>
+void findWaitingTime(vector <T>& proc, const int& n,
 	vector <int>& wt)
 {
 	vector<int> rt;
@@ -19,7 +20,7 @@ void findWaitingTime(vector <Process>& proc,const int& n,
 
 	///Копия времени взрыва в rt[] 
 	for (int i = 0; i < n; i++)
-		rt[i] = proc[i].bt;
+		rt[i] = proc[i].burst_time;
 	int complete = 0, t = 0, minm = INT_MAX;
 	int shortest = 0, finish_time;
 	bool check = false;
@@ -29,7 +30,7 @@ void findWaitingTime(vector <Process>& proc,const int& n,
 
 		///Найти процесс с минимальным оставшимся временем среди процессов, которые поступают до текущего времени
 		for (int j = 0; j < n; j++) {
-			if ((proc[j].art <= t) &&
+			if ((proc[j].arriving_time <= t) &&
 				(rt[j] < minm) && rt[j] > 0) {
 				minm = rt[j];
 				shortest = j;
@@ -62,8 +63,8 @@ void findWaitingTime(vector <Process>& proc,const int& n,
 
 			///Рассчитать время ожидания
 			wt[shortest] = finish_time -
-				proc[shortest].bt -
-				proc[shortest].art;
+				proc[shortest].burst_time -
+				proc[shortest].arriving_time;
 			if (wt[shortest] < 0)
 				wt[shortest] = 0;
 		}
@@ -74,18 +75,18 @@ void findWaitingTime(vector <Process>& proc,const int& n,
 
 
 ///Функция для расчета времени обхода
-void findTurnAroundTime(vector <Process>& proc,const int& n,
-	vector <int>& wt,vector <int>& tat)
+void findTurnAroundTime(vector <Process>& proc, const int& n,
+	vector <int>& wt, vector <int>& tat)
 {
 	///Расчет времени выполнения работ путем добавления bt[i] + wt[i] 
 	for (int i = 0; i < n; i++)
-		tat[i] = proc[i].bt + wt[i];
+		tat[i] = proc[i].burst_time + wt[i];
 }
 
 
 
 ///Функция для вычисления среднего времени
-void findavgTime(vector <Process>& proc,const int& n)
+void findavgTime(vector <Process>& proc, const int& n)
 {
 
 	int total_wt = 0,
@@ -117,8 +118,8 @@ void findavgTime(vector <Process>& proc,const int& n)
 	for (int i = 0; i < n; i++) {
 		total_wt = total_wt + wt[i];
 		total_tat = total_tat + tat[i];
-		cout << " " << proc[i].pid << "\t\t"
-			<< proc[i].bt << "\t\t " << wt[i]
+		cout << " " << proc[i].Pid << "\t\t"
+			<< proc[i].burst_time << "\t\t " << wt[i]
 			<< "\t\t " << tat[i] << endl;
 	}
 
@@ -138,4 +139,3 @@ int main()
 	findavgTime(proc, n);
 	return 0;
 }
-
