@@ -3,13 +3,6 @@
 using namespace std;
 
 
-struct Process {
-	int Pid; // Идентификатор процесса
-	int burst_time; // Время взрыва
-	int arriving_time; // Время прибытия 
-};
-
-
 ///Функция для определения времени ожидания для всех процессов
 template <typename T>
 void findWaitingTime(vector <T>& proc, const int& n,
@@ -75,7 +68,8 @@ void findWaitingTime(vector <T>& proc, const int& n,
 
 
 ///Функция для расчета времени обхода
-void findTurnAroundTime(vector <Process>& proc, const int& n,
+template <typename T>
+void findTurnAroundTime(vector <T>& proc, const int& n,
 	vector <int>& wt, vector <int>& tat)
 {
 	///Расчет времени выполнения работ путем добавления bt[i] + wt[i] 
@@ -86,7 +80,8 @@ void findTurnAroundTime(vector <Process>& proc, const int& n,
 
 
 ///Функция для вычисления среднего времени
-void findavgTime(vector <Process>& proc, const int& n)
+template <typename T>
+void findavgTime(vector <T>& proc, const int& n)
 {
 
 	int total_wt = 0,
@@ -127,15 +122,4 @@ void findavgTime(vector <Process>& proc, const int& n)
 		<< (float)total_wt / (float)n;
 	cout << "\nAverage turn around time = "
 		<< (float)total_tat / (float)n;
-}
-
-
-///Код драйвера
-int main()
-{
-	vector <Process> proc = { { 1, 6, 2 }, { 2, 2, 5 },
-					{ 3, 8, 1 }, { 4, 3, 0}, {5, 4, 4} };
-	const int n = proc.size();
-	findavgTime(proc, n);
-	return 0;
 }
