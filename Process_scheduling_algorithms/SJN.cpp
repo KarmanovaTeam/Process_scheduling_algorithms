@@ -4,8 +4,8 @@
 #include <locale.h>
 
 using namespace std;
-
-void SJN_avg_time(const vector <Process>& processes)
+template <typename T>
+void SJN_avg_time(vector <T>& processes)
 {
 	printf("\nCJN\n");
 	vector <int> p, bt, wt, tat;
