@@ -59,7 +59,7 @@ void findTurnAroundTime(vector <T>& processes, const int& n, vector <int>& wt, v
 }
 //Function to calculate average time
 template <typename T>
-void findavgTime(vector <T>& processes)
+void findavTime(vector <T>& processes)
 {
     const int n = processes.size();
     vector <int> wt, tat;
