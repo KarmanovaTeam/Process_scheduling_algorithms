@@ -1,11 +1,12 @@
-﻿#include <vector>
+#include <vector>
 #include <iostream>
 using namespace std;
 
+template <typename T>
 struct queues {
     int total_time = 0;
     int length = 0;
-    Process* p;
+    <T>* p;
     bool executed = false;
 };
 
@@ -59,7 +60,8 @@ void checkCompleteTimer(queues q[]) {
         }
     }
 }
-template <typename T>
+
+
 void multilevel_queue(vector <T>& p1) {
     queues q[3];
     int n = p1.size;
