@@ -1,11 +1,12 @@
 #include <iostream> 
 #include<vector>
+#include "structures.h"
 using namespace std;
 
 
 ///Функция для определения времени ожидания для всех процессов
-template <typename T>
-void findWaitingTime(vector <T>& proc, const int& n,
+
+void findWaitingTime(vector <Process>& processes, const int& n,
 	vector <int>& wt,vector <int>& tat)
 {
 	vector<int> rt;
@@ -13,7 +14,7 @@ void findWaitingTime(vector <T>& proc, const int& n,
 
 	///Копия времени взрыва в rt[] 
 	for (int i = 0; i < n; i++)
-		rt[i] = proc[i].burst_time;
+		rt[i] = processes[i].burst_time;
 	int complete = 0, t = 0, minm = INT_MAX;
 	int shortest = 0, finish_time;
 	bool check = false;
@@ -23,7 +24,7 @@ void findWaitingTime(vector <T>& proc, const int& n,
 
 		///Найти процесс с минимальным оставшимся временем среди процессов, которые поступают до текущего времени
 		for (int j = 0; j < n; j++) {
-			if ((proc[j].arriving_time <= t) &&
+			if ((processes[j].arriving_time <= t) &&
 				(rt[j] < minm) && rt[j] > 0) {
 				minm = rt[j];
 				shortest = j;
@@ -56,8 +57,8 @@ void findWaitingTime(vector <T>& proc, const int& n,
 
 			///Рассчитать время ожидания
 			wt[shortest] = finish_time -
-				proc[shortest].burst_time -
-				proc[shortest].arriving_time;
+				processes[shortest].burst_time -
+				processes[shortest].arriving_time;
 			if (wt[shortest] < 0)
 				wt[shortest] = 0;
 		}
@@ -66,7 +67,7 @@ void findWaitingTime(vector <T>& proc, const int& n,
 	}
 	///Расчет времени выполнения работ путем добавления bt[i] + wt[i] 
 	for (int i = 0; i < n; i++)
-		tat[i] = proc[i].burst_time + wt[i];
+		tat[i] = processes[i].burst_time + wt[i];
 }
 
 
@@ -83,11 +84,10 @@ void findWaitingTime(vector <T>& proc, const int& n,
 
 
 ///Функция для вычисления среднего времени
-template <typename T>
-void findTime(vector <T>& proc)
+void findTime(vector <Process>& processes)
 {
 	cout <<endl<< "SRTF\n";
-	const int n = proc.size();
+	const int n = processes.size();
 	int total_wt = 0,
 		total_tat = 0;
 	vector <int> wt;
@@ -97,7 +97,7 @@ void findTime(vector <T>& proc)
 
 
 	///Функция для определения времени ожидания всех процессов
-	findWaitingTime(proc, n, wt,tat);
+	findWaitingTime(processes, n, wt,tat);
 
 	///Функция для определения времени обхода для всех процессов
 	//findTurnAroundTime(proc, n, wt, tat);
@@ -107,7 +107,7 @@ void findTime(vector <T>& proc)
 	for (int i = 0; i < n; i++) {
 		total_wt = total_wt + wt[i];
 		total_tat = total_tat + tat[i];
-		cout << proc[i].Pid << " ";
+		cout << processes[i].Pid << " ";
 			/* << "\t\t"
 			<< proc[i].burst_time << "\t\t " << wt[i]
 			<< "\t\t " << tat[i] << endl;*/
