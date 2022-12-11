@@ -73,7 +73,7 @@ void SJN_avg_time(const vector <Process>& processes)
 	//printf("WT - waiting time, время ожидания начала выполнения процесса\n");
 	//printf("TAT - turn around time, время от вызова процесса, до его завершения. TAT = WT + BT при одновременном вызове процессов\n");
 	
-	printf("P     BT     WT     TAT\n");
+	//printf("P     BT     WT     TAT\n");
 
 	// Вычисление T_A_T_ и печать
 
@@ -84,7 +84,7 @@ void SJN_avg_time(const vector <Process>& processes)
 
 		total += tat[i];
 
-		printf("P%d     %d     %d      %d\n", p[i], bt[i], wt[i], tat[i]);
+		//printf("P%d     %d     %d      %d\n", p[i], bt[i], wt[i], tat[i]);
 		
 		// !!!	ПЕЧАТЬ ИДЁТ ПО СОРТИРОВАННОМУ ВЕКТОРУ ПРОЦЕССОВ ДЛЯ ВИДИМОСТИ ПОРЯДКА ВЫПОЛНЕНИЯ
 
