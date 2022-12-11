@@ -40,7 +40,13 @@ void sortProcess(vector <T>& processes, const int& n)
     }
 }
 
+template <typename T>
+void findTurnAroundTime(vector <T>& processes, const int& n, vector <int>& wt, vector <int>& tat)
+{
 
+    for (int i = 0; i < n; i++)
+        tat[i] = processes[i].burst_time + wt[i];
+}
 
 template <typename T>
 void findWaitingTime(vector <T>& processes, const int& n, vector <int>& wt)
@@ -50,13 +56,7 @@ void findWaitingTime(vector <T>& processes, const int& n, vector <int>& wt)
     for (int i = 1; i < n; i++)
         wt[i] = processes[i - 1].burst_time + wt[i - 1];
 }
-template <typename T>
-void findTurnAroundTime(vector <T>& processes, const int& n, vector <int>& wt, vector <int>& tat)
-{
 
-    for (int i = 0; i < n; i++)
-        tat[i] = processes[i].burst_time + wt[i];
-}
 //Function to calculate average time
 template <typename T>
 void findavTime(vector <T>& processes)
@@ -66,8 +66,9 @@ void findavTime(vector <T>& processes)
     wt.resize(n);
     tat.resize(n);
     int total_wt = 0, total_tat = 0;
-    findWaitingTime(processes, n, wt);
-    findTurnAroundTime(processes, n, wt, tat);
+    findWaitingTime(processes, n, wt); 
+
+    findTurnAroundTime(processes, n, wt,tat);
     //Display processes along with all details
     //cout << "Processes  " << " Burst time  "
         //<< " Waiting time  " << " Turn around time\n";
@@ -94,5 +95,3 @@ void findavTime(vector <T>& processes)
 
         << (float)total_tat / (float)n;
 }
-
-// Driver code
