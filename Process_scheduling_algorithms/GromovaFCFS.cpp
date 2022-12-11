@@ -1,9 +1,9 @@
 #include <vector>
 #include<iostream>
+#include "structures.h"
 using namespace std;
 
-template <typename T>
-void sortProcess(vector <T>& processes, const int& n)
+void sortProcess(vector <Process>& processes, const int& n)
 {
     vector <int> at;
     vector <int> num;
@@ -15,9 +15,9 @@ void sortProcess(vector <T>& processes, const int& n)
         num[i] = processes[i].Pid;
     }
 
-    for (int i = 0;i < n;i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0;j < n - 1;j++)
+        for (int j = 0; j < n - 1; j++)
         {
 
             if (at[i] < at[j])
@@ -34,22 +34,22 @@ void sortProcess(vector <T>& processes, const int& n)
             }
         }
     }
-    for (int i = 0;i < n;i++)
+    for (int i = 0; i < n; i++)
     {
         cout << num[i] << "\t";
     }
 }
 
-//template <typename T>
-//void findTurnAroundTime(vector <T>& processes, const int& n, vector <int>& wt, vector <int>& tat)
-//{
-//
-//    for (int i = 0; i < n; i++)
-//        tat[i] = processes[i].burst_time + wt[i];
-//}
+/*template <typename T>
+void findTurnAroundTime(vector <T>& processes, const int& n, vector <int>& wt, vector <int>& tat)
+{
 
-template <typename T>
-void findWaitingTime(vector <T>& processes, const int& n, vector <int>& wt, vector <int>& tat)
+   for (int i = 0; i < n; i++)
+       tat[i] = processes[i].burst_time + wt[i];
+}*/
+
+
+void findWaiting(vector <Process>& processes, const int& n, vector <int>& wt, vector <int>& tat)
 {
     // waiting time for first process is 0
     wt[0] = 0;
@@ -60,14 +60,16 @@ void findWaitingTime(vector <T>& processes, const int& n, vector <int>& wt, vect
 }
 
 //Function to calculate average time
-template <typename T>
-void findavTime(vector <T>& processes)
+
+void findavTime(vector <Process>& processes)
 {
     const int n = processes.size();
     vector <int> wt, tat;
     wt.resize(n);
     tat.resize(n);
-    findWaitingTime(processes, n, wt,tat);
+
+    findWaiting(processes, n, wt, tat);
+
     int total_wt = 0, total_tat = 0;
     //findTurnAroundTime(processes, n, wt,tat);
     //Display processes along with all details
@@ -84,7 +86,7 @@ void findavTime(vector <T>& processes)
             // cout << processes[i] << " ";
 
     }
-
+    cout<< endl;
     cout << "First Come First Serve(FCFS)" << endl;
     sortProcess(processes, n);
 
