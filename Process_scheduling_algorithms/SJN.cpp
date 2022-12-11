@@ -7,7 +7,7 @@ using namespace std;
 
 void SJN_avg_time(const vector <Process>& processes)
 {
-	cout << "\nSJN\n" << endl;
+	printf("\nCJN\n");
 	vector <int> p, bt, wt, tat;
 
 	int i, j, n, total = 0, index, temp;
