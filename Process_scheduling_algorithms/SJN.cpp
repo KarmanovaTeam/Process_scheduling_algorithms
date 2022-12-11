@@ -2,12 +2,12 @@
 #include <stdio.h>
 #include <vector>
 #include <locale.h>
+#include "structures.h"
 
 using namespace std;
-template <typename T>
-void SJN_avg_time(vector <T>& processes)
+void SJN_avg_time(vector <Process>& processes)
 {
-	printf("\nCJN\n");
+	printf("\nSJN\n");
 	vector <int> p, bt, wt, tat;
 
 	int i, j, n, total = 0, index, temp;
@@ -98,3 +98,4 @@ void SJN_avg_time(vector <T>& processes)
 	printf("Average waiting time= %f", avg_wt);
 	printf("\nAverage turn around time = %f", avg_tat);
 }
+
