@@ -1,10 +1,10 @@
 #include<iostream> 
 #include<vector>
+#include "structures.h"
 using namespace std;
 
 //Функция для нахождения времени ожидания для всех
-template <typename T>
-void findWaitingTime(vector <T>& processes, const int& n, vector <int>& wt, const int& quantum)
+void findWaitingTime(vector <Process>& processes, const int& n, vector <int>& wt, const int& quantum)
 {
     vector <int> rem_bt;
     rem_bt.resize(n);
@@ -37,15 +37,13 @@ void findWaitingTime(vector <T>& processes, const int& n, vector <int>& wt, cons
     }
 }
 //Функция для расчета времени оборота
-template <typename T>
-void findTurnAroundTime(vector <T>& processes, const int& n, vector <int>& wt, vector <int>& tat)
+void findTurnAroundTime(vector <Process>& processes, const int& n, vector <int>& wt, vector <int>& tat)
 {
     for (int i = 0; i < n; i++)
         tat[i] = processes[i].burst_time + wt[i];
 }
 // функция расчета среднего времени
-template<typename T>
-void findavgTime(vector <T>& processes, const int& quantum)
+void findavgTime(vector <Process>& processes, const int& quantum)
 {
     cout << "round-robbin\n";
     const int n = processes.size();
