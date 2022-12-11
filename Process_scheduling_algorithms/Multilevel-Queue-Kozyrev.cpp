@@ -57,9 +57,9 @@ void checkCompleteTimer(queues q[]) {
 void multilevel_queue(vector <Process> p1) {
     queues q[3];
     int n = p1.size();
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++) {
         for (int j = 0; j < 3; j++) {
-            if (p1[i].priority == j+1) {
+            if (p1[i].priority == j + 1) {
                 q[j].length++;
             }
         }
@@ -87,7 +87,7 @@ void multilevel_queue(vector <Process> p1) {
         }
 
     }
-
+    std::cout << endl << "Multilevel Queue" << endl;
     a--; b--; c--;
     for (int i = 0; i < 3; i++) {
         std::cout << "Queue " << i + 1 << " : ";
@@ -239,19 +239,19 @@ void multilevel_queue(vector <Process> p1) {
 
     int sum_tt = 0;
     int sum_wt = 0;
+    
 
-    std::cout << "\n\nProcess     | Turn Around Time | Waiting Time\n";
+    //std::cout << "\n\nProcess     | Turn Around Time | Waiting Time\n";
     for (int i = 0; i < 3; i++) {
-        std::cout << "Queue " << i + 1 << "\n";
+        //std::cout << "Queue " << i + 1 << "\n";
         for (int j = 0; j < q[i].length; j++) {
-            std::cout << "Process P" << q[i].p[j].Pid << "\t" << q[i].p[j].burst_time+q[i].total_time << "\t\t    " << q[i].p[j].arriving_time - q[i].p[i].burst_time << "\n";
+            //std::cout << "Process P" << q[i].p[j].Pid << "\t" << q[i].p[j].burst_time + q[i].total_time << "\t\t    " << q[i].p[j].arriving_time - q[i].p[i].burst_time << "\n";
             sum_tt += q[i].p[j].arriving_time;
-            sum_wt += q[i].p[j].arriving_time-q[i].p[j].burst_time;
+            sum_wt += q[i].p[j].arriving_time - q[i].p[j].burst_time;
         }
     }
 
-    std::cout << "\n The average turnaround time is : " << sum_tt / n << endl;
-    std::cout << "\n The average waiting time is : " << sum_wt / n << endl;
+    std::cout << "The average turnaround time is : " << sum_tt / n<<endl;
+    std::cout << "The average waiting time is : " << sum_wt / n ;
 
 }
-
