@@ -15,12 +15,12 @@ enum PRIORITY
     HIGH = 3
 };
 
-struct queues {
+/*struct queues {
     int total_time = 0;
     int length = 0;
     Process* p;
     bool executed = false;
-};
+};*/
 
 struct Process {
     int Pid; //номер процесса(задачи), 
