@@ -55,21 +55,14 @@ void findavgTime(vector <T>& processes, const int& quantum)
     int total_wt = 0, total_tat = 0;
     findWaitingTime(processes, n, wt, quantum);
     findTurnAroundTime(processes, n, wt, tat);
-    //cout << "PN-номер процесса\n";
-    //cout << "BT-время взрыва\n";
-    //cout << "WT-время ожидания \n";
-    //cout << "TAT-время оборота\n";
-    //cout << "PN\t " << " \tBT "
-        << " \tWT " << " \tTAT=BT+wt\n";
     for (int i = 0; i < n; i++)
     {
         total_wt = total_wt + wt[i];
         total_tat = total_tat + tat[i];
-        cout << " " << processes[i].Pid << "\t\t" << processes[i].burst_time << "\t "
-            << wt[i] << "\t\t " << tat[i] << endl;
+        cout  << processes[i].Pid << " ";
     }
-    cout << "Среднее время ожидания = "
+    cout <<endl<< "Average waiting time = "
         << (float)total_wt / (float)n;
-    cout << "\nСреднее время оборота = "
+    cout << "\nAverage turn around time = "
         << (float)total_tat / (float)n;
 }
