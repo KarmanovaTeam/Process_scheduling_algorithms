@@ -84,8 +84,9 @@ void findWaitingTime(vector <T>& proc, const int& n,
 
 ///Функция для вычисления среднего времени
 template <typename T>
-void findavTime(vector <T>& proc)
+void findTime(vector <T>& proc)
 {
+	cout <<endl<< "SRTF\n";
 	const int n = proc.size();
 	int total_wt = 0,
 		total_tat = 0;
@@ -101,24 +102,15 @@ void findavTime(vector <T>& proc)
 	///Функция для определения времени обхода для всех процессов
 	//findTurnAroundTime(proc, n, wt, tat);
 
-	///Отображение процессов вместе со всеми подробностями
-	cout << " P\t\t"
-		<< "BT\t\t"
-		<< "WT\t\t"
-		<< "TAT\t\t\n";
-	cout << "P-номер процесса\n";
-	cout << "BT-время взрыва\n";
-	cout << "WT-время ожидания \n";
-	cout << "TAT-время оборота\n";
-
-
+	
 	///Рассчитать общее время ожидания и общее время выполнения работ
 	for (int i = 0; i < n; i++) {
 		total_wt = total_wt + wt[i];
 		total_tat = total_tat + tat[i];
-		cout << " " << proc[i].Pid << "\t\t"
+		cout << proc[i].Pid << " ";
+			/* << "\t\t"
 			<< proc[i].burst_time << "\t\t " << wt[i]
-			<< "\t\t " << tat[i] << endl;
+			<< "\t\t " << tat[i] << endl;*/
 	}
 
 	cout << "\nAverage waiting time = "
