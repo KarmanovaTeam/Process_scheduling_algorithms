@@ -1,6 +1,5 @@
 #include<iostream> 
 #include<vector> 
-#include"SJN.cpp"
 #include"syuzev_dz.cpp"
 #include"GromovaFCFS.cpp"
 using namespace std;
@@ -19,6 +18,8 @@ struct Process {
     int arriving_time;// время прибытия
     PRIORITY priority = NORMAL;//За основу взята средняя приоритетность, т.е. где приоритетность не указана - она нормальная(т.е. равна 2) 
 };
+
+#include"SJN.cpp"
 
 int main() {
     //Тест 1
