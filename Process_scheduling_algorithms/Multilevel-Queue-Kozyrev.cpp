@@ -1,14 +1,7 @@
 #include <vector>
 #include <iostream>
+#include "structures.h"
 using namespace std;
-
-template <typename T>
-struct queues {
-    int total_time = 0;
-    int length = 0;
-    <T>* p;
-    bool executed = false;
-};
 
 
 bool notComplete(queues q[]) {
@@ -61,10 +54,9 @@ void checkCompleteTimer(queues q[]) {
     }
 }
 
-
-void multilevel_queue(vector <T>& p1) {
+void multilevel_queue(vector <Process> p1) {
     queues q[3];
-    int n = p1.size;
+    int n = p1.size();
     for (int i = 0; i < n; i++){
         for (int j = 0; j < 3; j++) {
             if (p1[i].priority == j+1) {
@@ -98,11 +90,11 @@ void multilevel_queue(vector <T>& p1) {
 
     a--; b--; c--;
     for (int i = 0; i < 3; i++) {
-        cout << "Queue " << i + 1 << " : ";
+        std::cout << "Queue " << i + 1 << " : ";
         for (int j = 0; j < q[i].length; j++) {
-            cout << q[i].p[j].priority << "->";
+            std::cout << q[i].p[j].Pid << "->";
         }
-        cout << "NULL" << endl;
+        std::cout << "NULL" << endl;
     }
 
 
@@ -125,7 +117,6 @@ void multilevel_queue(vector <T>& p1) {
         //Обрабатываем 1-ю очередь, если она ещё не выполнена 
         //Если выполнена меняем значение на 1
         if (q[l].executed == true) {
-            cout << "Queue " << l + 1 << " completed\n";
             l += 1;
             if (l >= 3) {
                 l = l % 3;
@@ -137,7 +128,6 @@ void multilevel_queue(vector <T>& p1) {
         //Обработка незавершенных процессов
 
         if (l == 0) {
-            cout << "Queue " << l + 1 << " in hand\n";
             //Round Robin алгоритм для q=4
             if (rr_timer == 0) {
                 rr_timer = 4;
@@ -152,7 +142,6 @@ void multilevel_queue(vector <T>& p1) {
                     break;
                 }
                 while (rr_timer > 0 && q[l].p[i].burst_time != 0 && timer != 10) {
-                    cout << "Executing queue 1 and " << i + 1 << " process for a unit time. Process has priority of " << q[l].p[i].priority << "\n";
                     q[l].p[i].burst_time--;
                     checkCompleteTimer(q);
                     rr_timer--;
@@ -188,7 +177,6 @@ void multilevel_queue(vector <T>& p1) {
 
 
         else if (l == 1) {
-            cout << "Queue " << l + 1 << " in hand\n";
             sort_ps(q[l]);
             //Приоритетное планирование
             for (int i = 0; i < q[l].length; i++) {
@@ -200,7 +188,6 @@ void multilevel_queue(vector <T>& p1) {
                     break;
                 }
                 while (q[l].p[i].burst_time != 0 && timer != 10) {
-                    cout << "Executing queue 2 and " << i + 1 << " process for a unit time. Process has priority of " << q[l].p[i].priority << "\n";
                     q[l].p[i].burst_time--;
                     checkCompleteTimer(q);
                     timer++;
@@ -216,7 +203,6 @@ void multilevel_queue(vector <T>& p1) {
             }
         }
         else {
-            cout << "Queue " << l + 1 << " in hand\n";
             //алгоритм первым пришел первым обслужен
             for (int i = 0; i < q[l].length; i++) {
                 if (q[l].p[i].burst_time == 0) {
@@ -227,7 +213,6 @@ void multilevel_queue(vector <T>& p1) {
                     break;
                 }
                 while (q[l].p[i].burst_time != 0 && timer != 10) {
-                    cout << "Executing queue 3 and " << i + 1 << " process for a unit time. Process has priority of " << q[l].p[i].priority << "\n";
                     q[l].p[i].burst_time--;
                     checkCompleteTimer(q);
 
@@ -243,7 +228,6 @@ void multilevel_queue(vector <T>& p1) {
             }
 
         }
-        cout << "Broke from queue " << l + 1 << "\n";
     }
 
     /*for (int i = 0; i < 3; i++) {
@@ -256,18 +240,18 @@ void multilevel_queue(vector <T>& p1) {
     int sum_tt = 0;
     int sum_wt = 0;
 
-    cout << "\n\nProcess     | Turn Around Time | Waiting Time\n";
+    std::cout << "\n\nProcess     | Turn Around Time | Waiting Time\n";
     for (int i = 0; i < 3; i++) {
-        cout << "Queue " << i + 1 << "\n";
+        std::cout << "Queue " << i + 1 << "\n";
         for (int j = 0; j < q[i].length; j++) {
-            cout << "Process P" << j + 1 << "\t" << q[i].p[j].arriving_time << "\t\t    " << q[i].p[j].arriving_time - q[i].p[i].burst_time << "\n";
+            std::cout << "Process P" << q[i].p[j].Pid << "\t" << q[i].p[j].burst_time+q[i].total_time << "\t\t    " << q[i].p[j].arriving_time - q[i].p[i].burst_time << "\n";
             sum_tt += q[i].p[j].arriving_time;
-            sum_wt += q[i].p[j].arriving_time-q[i].p[i].burst_time;
+            sum_wt += q[i].p[j].arriving_time-q[i].p[j].burst_time;
         }
     }
 
-    cout << "\n The average turnaround time is : " << sum_tt / n << endl;
-    cout << "\n The average waiting time is : " << sum_wt / n << endl;
+    std::cout << "\n The average turnaround time is : " << sum_tt / n << endl;
+    std::cout << "\n The average waiting time is : " << sum_wt / n << endl;
 
 }
 
