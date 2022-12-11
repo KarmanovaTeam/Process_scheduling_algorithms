@@ -6,7 +6,7 @@ using namespace std;
 ///Функция для определения времени ожидания для всех процессов
 template <typename T>
 void findWaitingTime(vector <T>& proc, const int& n,
-	vector <int>& wt)
+	vector <int>& wt,vector <int>& tat)
 {
 	vector<int> rt;
 	rt.resize(n);
@@ -64,24 +64,27 @@ void findWaitingTime(vector <T>& proc, const int& n,
 		t++;
 
 	}
-}
-
-
-///Функция для расчета времени обхода
-template <typename T>
-void findTurnAroundTime(vector <T>& proc, const int& n,
-	vector <int>& wt, vector <int>& tat)
-{
 	///Расчет времени выполнения работ путем добавления bt[i] + wt[i] 
 	for (int i = 0; i < n; i++)
 		tat[i] = proc[i].burst_time + wt[i];
 }
 
 
+///Функция для расчета времени обхода
+//template <typename T>
+//void findTurnAroundTime(vector <T>& proc, const int& n,
+//	vector <int>& wt, vector <int>& tat)
+//{
+//	///Расчет времени выполнения работ путем добавления bt[i] + wt[i] 
+//	for (int i = 0; i < n; i++)
+//		tat[i] = proc[i].burst_time + wt[i];
+//}
+
+
 
 ///Функция для вычисления среднего времени
 template <typename T>
-void findavgTime(vector <T>& proc)
+void findavTime(vector <T>& proc)
 {
 	const int n = proc.size();
 	int total_wt = 0,
@@ -93,10 +96,10 @@ void findavgTime(vector <T>& proc)
 
 
 	///Функция для определения времени ожидания всех процессов
-	findWaitingTime(proc, n, wt);
+	findWaitingTime(proc, n, wt,tat);
 
 	///Функция для определения времени обхода для всех процессов
-	findTurnAroundTime(proc, n, wt, tat);
+	//findTurnAroundTime(proc, n, wt, tat);
 
 	///Отображение процессов вместе со всеми подробностями
 	cout << " P\t\t"
@@ -123,4 +126,3 @@ void findavgTime(vector <T>& proc)
 	cout << "\nAverage turn around time = "
 		<< (float)total_tat / (float)n;
 }
-
