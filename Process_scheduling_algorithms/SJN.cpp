@@ -79,6 +79,8 @@ void SJN_avg_time(vector <T>& processes)
 
 
 	for (i = 0; i < n; i++) {
+		
+		printf("%d ", p[i]);
 
 		tat.push_back(bt[i] + wt[i]);
 
@@ -89,6 +91,7 @@ void SJN_avg_time(vector <T>& processes)
 		// !!!	ПЕЧАТЬ ИДЁТ ПО СОРТИРОВАННОМУ ВЕКТОРУ ПРОЦЕССОВ ДЛЯ ВИДИМОСТИ ПОРЯДКА ВЫПОЛНЕНИЯ
 
 	}
+	printf("\n");
 
 	avg_tat = (float)total / n;
 
