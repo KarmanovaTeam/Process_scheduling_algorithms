@@ -81,9 +81,9 @@ void findTurnAroundTime(vector <T>& proc, const int& n,
 
 ///Функция для вычисления среднего времени
 template <typename T>
-void findavgTime(vector <T>& proc, const int& n)
+void findavgTime(vector <T>& proc)
 {
-
+	const int n = proc.size();
 	int total_wt = 0,
 		total_tat = 0;
 	vector <int> wt;
@@ -123,3 +123,4 @@ void findavgTime(vector <T>& proc, const int& n)
 	cout << "\nAverage turn around time = "
 		<< (float)total_tat / (float)n;
 }
+
