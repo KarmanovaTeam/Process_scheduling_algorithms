@@ -7,7 +7,8 @@ void sortProcess(vector <T>& processes, const int& n)
 {
     vector <int> at;
     vector <int> num;
-    //rem_bt.resize(n);
+    at.resize(n);
+    num.resize(n);
     for (int i = 0; i < n; i++)
     {
         at[i] = processes[i].arriving_time;
@@ -16,12 +17,12 @@ void sortProcess(vector <T>& processes, const int& n)
 
     for (int i = 0;i < n;i++)
     {
-        for (int j = 0;j < n-1;j++)
+        for (int j = 0;j < n - 1;j++)
         {
-         
+
             if (at[i] < at[j])
             {
-                int Na,A;
+                int Na, A;
                 Na = num[i];
                 num[i] = num[j];
                 num[j] = Na;
@@ -29,7 +30,7 @@ void sortProcess(vector <T>& processes, const int& n)
                 A = at[i];
                 at[i] = at[j];
                 at[j] = A;
-            
+
             }
         }
     }
@@ -52,7 +53,7 @@ void findWaitingTime(vector <T>& processes, const int& n, vector <int>& wt)
 template <typename T>
 void findTurnAroundTime(vector <T>& processes, const int& n, vector <int>& wt, vector <int>& tat)
 {
-   
+
     for (int i = 0; i < n; i++)
         tat[i] = processes[i].burst_time + wt[i];
 }
@@ -78,7 +79,7 @@ void findavgTime(vector <T>& processes)
         total_tat = total_tat + tat[i];
         /*cout << "   " << i + 1 << "\t\t" << bt[i] << "\t    "
             << wt[i] << "\t\t  " << tat[i] << endl;*/
-       // cout << processes[i] << " ";
+            // cout << processes[i] << " ";
 
     }
 
