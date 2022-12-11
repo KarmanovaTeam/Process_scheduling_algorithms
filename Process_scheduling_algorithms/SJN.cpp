@@ -95,6 +95,6 @@ void SJN_avg_time(vector <T>& processes)
 
 	avg_tat = (float)total / n;
 
-	printf("Среднее время ожидания: %f", avg_wt);
-	printf("\nСреднее TAT= %f", avg_tat);
+	printf("Average waiting time= %f", avg_wt);
+	printf("\nAverage turn around time = %f", avg_tat);
 }
