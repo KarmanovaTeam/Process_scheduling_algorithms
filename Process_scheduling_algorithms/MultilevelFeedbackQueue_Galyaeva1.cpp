@@ -170,6 +170,7 @@ cout « Q3[i].name « "\t";
 //printf("\n%d\t\t%d\t\t", Q3[i].name, Q3[i].TAT);
 }
 }
+  double a,b;
 a = (double)total_wt / (double)n;
 a = round(a * 100.0) /
 100.0;
