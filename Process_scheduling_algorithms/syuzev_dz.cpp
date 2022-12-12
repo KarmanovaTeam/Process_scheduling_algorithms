@@ -59,7 +59,7 @@ void findavgTime(vector <Process>& processes, const int& quantum)
         total_tat = total_tat + tat[i];
         cout  << processes[i].Pid << " ";
     }
-    cout<<fixed;
+    cout << fixed;
     cout.precision(2);
     cout <<endl<< "Average waiting time = "
         << (float)total_wt / (float)n;
