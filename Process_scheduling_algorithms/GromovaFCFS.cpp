@@ -43,7 +43,6 @@ void sortProcess(vector <Process>& processes, const int& n)
 /*template <typename T>
 void findTurnAroundTime(vector <T>& processes, const int& n, vector <int>& wt, vector <int>& tat)
 {
-
    for (int i = 0; i < n; i++)
        tat[i] = processes[i].burst_time + wt[i];
 }*/
@@ -64,6 +63,7 @@ void findWaiting(vector <Process>& processes, const int& n, vector <int>& wt, ve
 void findavTime(vector <Process>& processes)
 {
     const int n = processes.size();
+    double a, b;
     vector <int> wt, tat;
     wt.resize(n);
     tat.resize(n);
@@ -86,15 +86,18 @@ void findavTime(vector <Process>& processes)
             // cout << processes[i] << " ";
 
     }
-    cout<< endl;
+    cout << endl;
     cout << "First Come First Serve(FCFS)" << endl;
     sortProcess(processes, n);
-
+    a = (double)total_wt / (double)n;
+    a = round(a * 100.0) / 100.0;
+    b = (double)total_tat / (double)n;
+    b = round(b * 100.0) / 100.0;
     cout << endl << "Average waiting time = "
-
-        << (float)total_wt / (float)n;
+        <<  (a);
 
     cout << "\nAverage turn around time = "
 
-        << (float)total_tat / (float)n;
+        << (b);
 }
+
