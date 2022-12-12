@@ -237,8 +237,8 @@ void multilevel_queue(vector <Process> p1) {
         }
     }*/
 
-    int sum_tt = 0;
-    int sum_wt = 0;
+    float sum_tt = 0;
+    float sum_wt = 0;
 
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < q[i].length; j++) {
@@ -246,7 +246,8 @@ void multilevel_queue(vector <Process> p1) {
             sum_wt += q[i].p[j].total_time-q[i].p[j].tt_time;
         }
     }
-
+    cout << fixed;
+    cout.precision(2);
     std::cout << "\n The average turnaround time is : " << sum_tt / n << endl;
     std::cout << "\n The average waiting time is : " << sum_wt / n << endl;
 
