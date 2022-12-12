@@ -57,9 +57,9 @@ void checkCompleteTimer(queues q[]) {
 void multilevel_queue(vector <Process> p1) {
     queues q[3];
     int n = p1.size();
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++) {
         for (int j = 0; j < 3; j++) {
-            if (p1[i].priority == j+1) {
+            if (p1[i].priority == j + 1) {
                 q[j].length++;
             }
         }
@@ -87,7 +87,7 @@ void multilevel_queue(vector <Process> p1) {
         }
 
     }
-
+    cout << "Multilevel Queue" << endl;
     a--; b--; c--;
     for (int i = 0; i < 3; i++) {
         cout << "Queue " << i + 1 << " ";
@@ -243,13 +243,13 @@ void multilevel_queue(vector <Process> p1) {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < q[i].length; j++) {
             sum_tt += q[i].p[j].total_time;
-            sum_wt += q[i].p[j].total_time-q[i].p[j].tt_time;
+            sum_wt += q[i].p[j].total_time - q[i].p[j].tt_time;
         }
     }
     cout << fixed;
     cout.precision(2);
-    std::cout << "\n The average turnaround time is : " << sum_tt / n << endl;
-    std::cout << "\n The average waiting time is : " << sum_wt / n << endl;
+    std::cout << "Average waiting time =  " << sum_wt / n << endl;
+    std::cout << "Average turn around time  " << sum_tt / n;
 
 }
 
