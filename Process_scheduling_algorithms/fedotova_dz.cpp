@@ -116,5 +116,5 @@ void findTime(vector <Process>& processes)
 	cout << "\nAverage waiting time = "
 		<< (float)total_wt / (float)n;
 	cout << "\nAverage turn around time = "
-		<< (float)total_tat / (float)n;
+		<< (float)total_tat / (float)n<< endl;
 }
