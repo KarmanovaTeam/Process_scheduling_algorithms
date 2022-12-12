@@ -93,6 +93,8 @@ void findavTime(vector <Process>& processes)
     a = round(a * 100.0) / 100.0;
     b = (double)total_tat / (double)n;
     b = round(b * 100.0) / 100.0;
+    cout << fixed;
+    cout.precision(2);
     cout << endl << "Average waiting time = "
         <<  (a);
 
