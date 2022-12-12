@@ -101,5 +101,6 @@ void findavTime(vector <Process>& processes)
     cout << "\nAverage turn around time = "
 
         << (b);
+    cout << endl;
 }
 
