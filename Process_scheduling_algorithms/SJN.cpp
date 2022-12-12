@@ -11,7 +11,7 @@ void SJN_avg_time(vector <Process>& processes)
 	vector <int> p, bt, wt, tat;
 
 	int i, j, n, total = 0, index, temp;
-	double avg_wt, avg_tat;
+	float avg_wt, avg_tat;
 
 	n = processes.size();
 
@@ -95,7 +95,7 @@ void SJN_avg_time(vector <Process>& processes)
 
 	avg_tat = (float)total / n;
 
-	printf("Average waiting time= %f", avg_wt);
-	printf("\nAverage turn around time = %f", avg_tat);
+	printf("Average waiting time= %.2f", avg_wt);
+	printf("\nAverage turn around time = %.2f", avg_tat);
 }
 
