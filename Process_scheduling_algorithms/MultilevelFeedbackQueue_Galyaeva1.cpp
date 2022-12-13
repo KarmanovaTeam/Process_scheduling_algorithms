@@ -17,39 +17,30 @@ template <typename T>
 void sortByArrival(vector <T>& processes, const int& n)
 {
 Q1.resize(n);
+struct process temp;
+int i, j;
 for (int i = 0; i < n; i++)
 {
 Q1[i].AT = processes[i].arriving_time;
-Q1[i].name = processes[i].Pid;
 }
-for (int i = 0; i < n; i++)
+for (i = 0;i < n;i++)
 {
-for (int j = 0; j < n - 1; j++)
-{
-
-if (Q1[i].AT < Q1[j].AT)
-{
-int Na, A;
-Na = Q1[i].name;
-Q1[i].name = Q1[j].name;
-Q1[j].name = Na;
-
-A = Q1[i].AT;
-Q1[i].AT = Q1[j].AT;
-Q1[j].AT = A;
+    for (j = i + 1;j < n;j++)
+    {
+        if (Q1[i].AT > Q1[j].AT)
+        {
+            temp = Q1[i];
+            Q1[i] = Q1[j];
+            Q1[j] = temp;
+        }
+    }
 }
-}
-}
- for (int i = 0; i < n; i++)
- {
-	 cout << Q1[i].name << "\t";
- }
 }
 
 template <typename T>
 void MLFQ(vector <T>& processes)
 {
-int i, j, k = 0, r = 0, time = 0, tq1 = 5, tq2 = 8, flag = 0;
+int i, j, k = 0, r = 0, time = 0, tq1 = 4, tq2 = 8, flag = 0;
 int c;
 const int n = processes.size();
 int total_wt = 0, total_tat = 0;
@@ -65,8 +56,8 @@ Q1[i].RT = Q1[i].BT;/*save burst time in remaining time for each process*/
 }
 cout << "Multilevel Feedback Queue: " << "\n";
 sortByArrival(processes, n);
+cout<<"Process in first queue following RR with qt=4\n";
 time = Q1[0].AT;
-//printf("Process in first queue following RR with qt=5");
 for (i = 0; i < n; i++)
 {
 if (Q1[i].RT <= tq1)
@@ -77,6 +68,7 @@ Q1[i].WT = time - Q1[i].AT - Q1[i].BT;/*amount of time process has been waiting 
 Q1[i].TAT = time - Q1[i].AT;/*amount of time to execute the process*/
 total_wt = total_wt + Q1[i].WT;
 total_tat = total_tat + Q1[i].TAT;
+cout<< Q1[i].name << "\t";
 }
 else/*process moves to queue 2 with qt=8*/
 {
@@ -92,7 +84,7 @@ flag = 1;
 }
 if (flag == 1)
 {
-//printf("\nProcess in second queue following RR with qt=8");
+cout<<"\nProcess in second queue following RR with qt=8\n";
 for (i = 0; i < k; i++)
 {
 if (Q2[i].RT <= tq2)
@@ -103,6 +95,7 @@ Q2[i].WT = time - tq1 - Q2[i].BT;/*amount of time process has been waiting in th
 Q2[i].TAT = time - Q2[i].AT;/*amount of time to execute the process*/
 total_wt = total_wt + Q2[i].WT;
 total_tat = total_tat + Q2[i].TAT;
+cout << Q2[i].name << "\t";
 }
 else/*process moves to queue 3 with FCFS*/
 {
@@ -119,7 +112,7 @@ flag = 2;
 }
 {
 if (flag == 2)
-//printf("\nProcess in third queue following FCFS ");
+cout<<"\nProcess in third queue following FCFS\n ";
 for (i = 0; i < r; i++)
 {
 if (i == 0)
@@ -133,6 +126,7 @@ Q3[i].TAT = Q3[i].CT;
 Q3[i].WT = Q3[i].TAT - Q3[i].BT;
 total_wt = total_wt + Q3[i].WT;
 total_tat = total_tat + Q3[i].TAT;
+cout << Q3[i].name << "\t";
 }
 }
   double a,b;
