@@ -6,6 +6,7 @@
 #include"syuzev_dz.cpp"
 #include"fedotova_dz.cpp"
 #include"GromovaFCFS.cpp"
+#include"MultilevelFeedbackQueue_Galyaeva1.cpp";
 
 using namespace std;
 //Похожие процессы(одинаковое время, в одно время процессы пришли, одинаковая приоритетность
@@ -18,6 +19,7 @@ void test1() {
     findavTime(processes);
     findTime(processes);
     multilevel_queue(processes);
+    MLFQ(processes);
     cout << endl;
 }
 //обычный тест
@@ -30,6 +32,7 @@ void test2() {
     findavTime(processes);
     findTime(processes);
     multilevel_queue(processes);
+    MLFQ(processes);
     cout << endl;
 }
 //Высокая приоритетность, долгие процессы, большой квант времи
@@ -42,6 +45,7 @@ void test3() {
     findavTime(processes);
     findTime(processes);
     multilevel_queue(processes);
+    MLFQ(processes);
     cout << endl;
 }
 //Большое(относительно)кол-во процессов
@@ -58,6 +62,7 @@ void test4() {
     SJN_avg_time(processes);
     findTime(processes);
     multilevel_queue(processes);
+    MLFQ(processes);
 }
 
 
