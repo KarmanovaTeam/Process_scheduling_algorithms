@@ -14,9 +14,9 @@ void test1() {
     cout <<"Test 1" << endl;
     const int quantum = 3; //квант времения
     vector<Process> processes = { {1, 4,2,LOW},{2, 4,2,LOW}, {3, 4,2, LOW}, {4, 10,1,LOW }, {5, 10,1, LOW} };
+    findavTime(processes);
     findavgTime(processes, quantum);
     SJN_avg_time(processes);
-    findavTime(processes);
     findTime(processes);
     multilevel_queue(processes);
     MLFQ(processes);
@@ -27,9 +27,9 @@ void test2() {
     cout<< endl << "Test 2" << endl;
     const int quantum = 2; //квант времения
     vector<Process> processes = { {1, 10, 3}, {2, 4, 1}, {3, 18,2, HIGH}, {4, 99,4, LOW}, {5, 2,5}, {6, 55,10}, {7, 1000,6},{8, 23,8, LOW},{9, 10,9},{10, 100000,11, HIGH} };
+    findavTime(processes);
     findavgTime(processes, quantum);
     SJN_avg_time(processes);
-    findavTime(processes);
     findTime(processes);
     multilevel_queue(processes);
     MLFQ(processes);
@@ -40,9 +40,9 @@ void test3() {
     cout <<endl<<"Test 3" << endl;
     const int quantum = 1000000; //квант времения
     vector<Process> processes = { {1, 10000000,2},{2, 100000,2}, {3, 500000,0, HIGH}, {4, 2000000,19, HIGH}, {5, 100000000,25, HIGH} };
+    findavTime(processes);
     findavgTime(processes, quantum);
     SJN_avg_time(processes);
-    findavTime(processes);
     findTime(processes);
     multilevel_queue(processes);
     MLFQ(processes);
@@ -57,12 +57,13 @@ void test4() {
     { 21, 43, 14,LOW }, { 22, 32, 118,LOW }, { 23, 39,6, HIGH }, { 24, 15,1, LOW }, { 25, 38,1 }, { 26, 28,1 }, { 27, 14,79 }, { 28, 15,33, LOW }, { 29, 26,39,HIGH }, { 30, 2,118},
     {31, 22, 100,HIGH}, { 32, 45, 118 }, { 33, 18,23, HIGH }, { 34, 7,44, LOW }, { 35, 21,28 }, { 36, 17,10,LOW }, { 37, 42,6 }, { 38, 30,88, LOW }, { 39, 27,19,HIGH }, { 40, 34,11, LOW },
     { 41, 38, 31, LOW}, { 42, 4, 5,LOW }, { 43, 6,2, HIGH }, { 44, 29,4, LOW }, { 45, 8,57 }, { 46, 9,102,HIGH }, { 47, 9,6 }, { 48, 6,81, LOW }, { 49, 20,92 }, { 50, 4,111, LOW } };
-    findavgTime(processes, quantum);
     findavTime(processes);
+    findavgTime(processes, quantum);
     SJN_avg_time(processes);
     findTime(processes);
     multilevel_queue(processes);
     MLFQ(processes);
+    cout << endl;
 }
 
 
