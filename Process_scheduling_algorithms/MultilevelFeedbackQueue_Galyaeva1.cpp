@@ -54,7 +54,7 @@ Q1[i].BT = processes[i].burst_time;;
 Q1[i].AT = processes[i].arriving_time;
 Q1[i].RT = Q1[i].BT;/*save burst time in remaining time for each process*/
 }
-cout << "Multilevel Feedback Queue: " << "\n";
+cout << endl << "Multilevel Feedback Queue: " << "\n";
 sortByArrival(processes, n);
 cout<<"Process in first queue following RR with qt=4\n";
 time = Q1[0].AT;
